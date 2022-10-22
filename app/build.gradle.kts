@@ -37,6 +37,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = Options.kotlinJwmTarget
+        freeCompilerArgs += Options.freeCompilerArgs
     }
 }
 
@@ -50,8 +51,12 @@ dependencies {
     implementation(Dependencies.AndroidX.navigationUi)
     implementation(Dependencies.Coroutines.core)
     implementation(Dependencies.Google.material)
+    
     implementation(Dependencies.Google.hilt)
     kapt(Dependencies.Google.hiltCompiler)
+
+    implementation(Dependencies.AndroidX.room)
+    kapt(Dependencies.AndroidX.roomCompiler)
 
     testImplementation(Dependencies.Test.junit)
 

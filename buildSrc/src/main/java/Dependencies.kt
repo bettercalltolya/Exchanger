@@ -54,6 +54,9 @@ object Options {
     val compileSourceCompatibility = JavaVersion.VERSION_11
     val compileTargetCompatibility = JavaVersion.VERSION_11
     const val kotlinJwmTarget = "11"
+    val freeCompilerArgs = listOf(
+        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+    )
 }
 
 object Dependencies {

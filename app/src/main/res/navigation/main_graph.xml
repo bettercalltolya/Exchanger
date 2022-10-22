@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/exchangeFragment">
+
+    <fragment
+        android:id="@+id/exchangeFragment"
+        android:name="com.bettercalltolya.kevintask.ui.exchange.ExchangeFragment"
+        android:label="@string/exchange_screen_label"
+        tools:layout="@layout/fragment_exchange">
+
+        <action
+            android:id="@+id/toExchangeHistory"
+            app:destination="@id/exchangeHistoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/exchangeHistoryFragment"
+        android:name="com.bettercalltolya.kevintask.ui.history.ExchangeHistoryFragment"
+        android:label="@string/exchange_history_screen_label"
+        tools:layout="@layout/fragment_exchange_history" />
+</navigation>

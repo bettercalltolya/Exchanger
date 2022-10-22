@@ -1,0 +1,40 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.KevinTask" parent="Base.Theme.KevinTask">
+        <item name="colorSurface">@color/white_f2</item>
+        <item name="colorOnSurface">@color/gray_25</item>
+        <item name="android:textColorPrimary">@color/black_12</item>
+        <item name="android:textColorSecondary">@color/gray_1</item>
+
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorOnBackground">@color/gray_33</item>
+
+        <item name="colorControlHighlight">@color/blue</item>
+        <item name="colorControlActivated">@color/gray_5</item>
+
+        <item name="android:navigationBarColor">?android:colorBackground</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:statusBarColor">?android:colorBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Base.Theme.KevinTask" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/dark_blue</item>
+        <item name="colorOnSecondary">@color/black_12</item>
+        <item name="toolbarStyle">@style/Widget.KevinTask.Toolbar</item>
+
+        <item name="colorError">@color/warning_red</item>
+        <item name="colorOnError">@color/white</item>
+
+        <item name="textAppearanceToolbarTitle">@style/TextAppearance.Toolbar.Title</item>
+        <item name="textAppearanceHeadline">@style/TextAppearance.Headline</item>
+        <item name="textAppearanceSubtitle">@style/TextAppearance.Subtitle</item>
+        <item name="textAppearanceBody">@style/TextAppearance.Body</item>
+
+        <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
+    </style>
+</resources>

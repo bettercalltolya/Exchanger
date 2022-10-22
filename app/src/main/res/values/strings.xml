@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="exchange_screen_label">Exchange</string>
+    <string name="exchange_history_screen_label">History</string>
+</resources>

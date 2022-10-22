@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.KevinTask.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?colorPrimaryVariant</item>
+        <item name="titleTextColor">?colorOnPrimary</item>
+    </style>
+</resources>

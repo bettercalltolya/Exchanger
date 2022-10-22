@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textAppearanceToolbarTitle" format="reference" />
+    <attr name="textAppearanceHeadline" format="reference" />
+    <attr name="textAppearanceSubtitle" format="reference" />
+    <attr name="textAppearanceBody" format="reference" />
+</resources>

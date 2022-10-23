@@ -185,6 +185,6 @@ class ExchangeViewModel @Inject constructor(
     }
 
     companion object {
-        private val RATES_UPDATE_TIMEOUT_MILLIS = TimeUnit.SECONDS.toMillis(5)
+        private val RATES_UPDATE_TIMEOUT_MILLIS = TimeUnit.MINUTES.toMillis(1)
     }
 }

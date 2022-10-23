@@ -60,7 +60,8 @@ object Options {
     val compileTargetCompatibility = JavaVersion.VERSION_11
     const val kotlinJwmTarget = "11"
     val freeCompilerArgs = listOf(
-        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+        "-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi"
     )
 }
 
@@ -76,6 +77,9 @@ object Dependencies {
         const val coroutines = "1.3.9"
         const val serialization = "1.4.1"
         const val paging = "3.1.1"
+        const val retrofit = "2.9.0"
+        const val okHttpLoggingInterceptor = "3.4.1"
+        const val kotlinSerializationConverter = "0.8.0"
 
         const val desugaring = "1.1.5"
 
@@ -111,6 +115,12 @@ object Dependencies {
 
     object Serialization {
         const val core = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serialization}"
+    }
+
+    object Retrofit {
+        const val core = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpLoggingInterceptor}"
+        const val kotlinSerialization = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.kotlinSerializationConverter}"
     }
 
     object Desugaring {

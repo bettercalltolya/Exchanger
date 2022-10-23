@@ -7,5 +7,3 @@ class BuyAmountTooLowException : Throwable()
 class NoPendingExchangeException : Throwable()
 
 class NoRatesAvailableException : Throwable()
-
-class NetworkException : Throwable()

@@ -1,5 +1,6 @@
 package com.bettercalltolya.kevintask.ui.core.dispatchers
 
+import com.bettercalltolya.common.core.CoroutineDispatchers
 import kotlinx.coroutines.Dispatchers
 
 object DefaultCoroutineDispatchers : CoroutineDispatchers {

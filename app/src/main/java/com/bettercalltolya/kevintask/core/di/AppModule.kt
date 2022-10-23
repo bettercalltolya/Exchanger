@@ -1,7 +1,8 @@
 package com.bettercalltolya.kevintask.core.di
 
 import com.bettercalltolya.common.core.CurrentTime
-import com.bettercalltolya.kevintask.ui.core.dispatchers.CoroutineDispatchers
+import com.bettercalltolya.kevintask.BuildConfig
+import com.bettercalltolya.common.core.CoroutineDispatchers
 import com.bettercalltolya.kevintask.ui.core.dispatchers.DefaultCoroutineDispatchers
 import dagger.Module
 import dagger.Provides
@@ -24,4 +25,8 @@ class AppModule {
     @Provides
     @HistoryPageSize
     fun provideHistoryPageSize(): Int = 15
+
+    @Provides
+    @ApiKey
+    fun provideApiKey(): String = BuildConfig.API_LAYER_API_KEY
 }

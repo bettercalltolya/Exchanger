@@ -1,6 +1,7 @@
 package com.bettercalltolya.kevintask.core.di
 
 import android.content.Context
+import com.bettercalltolya.data.api.RatesApiService
 import com.bettercalltolya.data.balance.DatabaseBalanceRepository
 import com.bettercalltolya.data.currency.MockedCurrencyRepository
 import com.bettercalltolya.data.currency.PreferencesLastUsedCurrencyRepository
@@ -44,7 +45,4 @@ class DataModule {
     fun provideExchangeHistoryRepository(
         historyDao: ExchangeHistoryDao
     ): ExchangeHistoryRepository = DatabaseExchangeHistoryRepository(historyDao)
-
-    @Provides
-    fun provideApiClient(): ApiClient = NetworkApiClient()
 }

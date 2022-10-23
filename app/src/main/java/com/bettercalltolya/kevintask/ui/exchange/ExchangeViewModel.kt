@@ -13,7 +13,7 @@ import com.bettercalltolya.domain.model.PendingExchange
 import com.bettercalltolya.domain.usecases.ExecuteExchangeUseCase
 import com.bettercalltolya.domain.usecases.GetExchangeRatesUseCase
 import com.bettercalltolya.domain.usecases.ObserveBalancesUseCase
-import com.bettercalltolya.kevintask.ui.core.dispatchers.CoroutineDispatchers
+import com.bettercalltolya.common.core.CoroutineDispatchers
 import com.bettercalltolya.kevintask.ui.core.extensions.toCurrencyString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job

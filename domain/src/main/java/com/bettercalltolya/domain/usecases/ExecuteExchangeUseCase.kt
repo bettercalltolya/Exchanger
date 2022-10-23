@@ -29,6 +29,7 @@ class ExecuteExchangeUseCase @Inject constructor(
 
         val sellAmountWithFees = pendingExchange.sellAmount + fee.feeAmount
 
+        // Creating empty balance if user don't have one
         val sellBalance = balanceRepository.getByCurrency(pendingExchange.sellCurrency)
             ?: Balance(pendingExchange.sellCurrency, 0.0)
         val buyBalance = balanceRepository.getByCurrency(pendingExchange.buyCurrency)

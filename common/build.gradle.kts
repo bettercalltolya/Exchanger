@@ -21,5 +21,6 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.Coroutines.core)
     coreLibraryDesugaring(Dependencies.Desugaring.core)
 }

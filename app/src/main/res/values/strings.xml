@@ -30,4 +30,6 @@
     <string name="general_cancel">Cancel</string>
     <string name="general_error_no_network">Check your network connection</string>
     <string name="general_error_message">Something went wrong. Please, try again</string>
+    <string name="general_error_api_key_limit_exceeded">Your API key exceeded its limit :(</string>
+    <string name="general_error_api_unauthorized">Something is wrong with your API key</string>
 </resources>

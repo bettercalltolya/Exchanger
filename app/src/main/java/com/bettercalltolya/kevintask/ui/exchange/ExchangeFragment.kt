@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -112,9 +113,10 @@ class ExchangeFragment : Fragment() {
 
             if (exchangeState.error != null) {
                 error.text = ErrorUiMapper.map(exchangeState.error, requireContext())
-                error.fadeIn()
+                error.isVisible = true
             } else {
-                error.fadeOut { error.text = "" }
+                error.isVisible = false
+                error.text = ""
             }
 
             val amount = exchangeState.pendingExchange?.buyAmount?.toCurrencyString() ?: "0.00"

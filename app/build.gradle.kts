@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.loadProperties
+
 plugins {
     id(Plugins.AndroidApplication.name)
     id(Plugins.KotlinAndroid.name)
@@ -5,7 +7,10 @@ plugins {
     id(Plugins.SafeArgs.name)
 
     kotlin(Plugins.Kapt.name)
+    kotlin(Plugins.Serialization.name)
 }
+
+val localProperties = loadProperties("local.properties")
 
 android {
     compileSdk = DefaultConfig.targetSdk
@@ -17,6 +22,9 @@ android {
         versionCode = DefaultConfig.versionCode
         versionName = DefaultConfig.versionName
         testInstrumentationRunner = DefaultConfig.instrumentationRunner
+
+        buildConfigField("String", "API_LAYER_API_KEY", "\"${localProperties.getProperty("apiLayer.apiKey")}\"")
+        buildConfigField("String", "API_LAYER_BASE_URL", "\"https://api.apilayer.com/\"")
     }
 
     buildTypes {
@@ -54,6 +62,11 @@ dependencies {
     implementation(Dependencies.AndroidX.paging)
     implementation(Dependencies.Coroutines.core)
     implementation(Dependencies.Google.material)
+
+    implementation(Dependencies.Serialization.core)
+    implementation(Dependencies.Retrofit.core)
+    implementation(Dependencies.Retrofit.loggingInterceptor)
+    implementation(Dependencies.Retrofit.kotlinSerialization)
 
     coreLibraryDesugaring(Dependencies.Desugaring.core)
     

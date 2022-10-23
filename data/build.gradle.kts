@@ -29,6 +29,8 @@ dependencies {
     implementation(Dependencies.Google.hilt)
     kapt(Dependencies.Google.hiltCompiler)
 
+    implementation(Dependencies.Retrofit.core)
+
     implementation(Dependencies.AndroidX.room)
     implementation(Dependencies.AndroidX.roomKtx)
     kapt(Dependencies.AndroidX.roomCompiler)

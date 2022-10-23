@@ -1,4 +1,4 @@
-package com.bettercalltolya.kevintask.ui.core.dispatchers
+package com.bettercalltolya.common.core
 
 import kotlinx.coroutines.CoroutineDispatcher
 

@@ -101,7 +101,7 @@ class ExchangeViewModel @Inject constructor(
     private fun updateRates(currencyFrom: String) {
         ratesJob?.cancel()
         ratesJob = viewModelScope.launch(dispatchers.io) {
-            updateExchangeState { it.copy(loading = true, error = null) }
+            _exchangeState.update { it.copy(loading = true, error = null) }
 
             val amountSellFlow = _sellAmount
             val currencyBuyFow = _currencyTo
@@ -124,7 +124,7 @@ class ExchangeViewModel @Inject constructor(
             ) { rates, amountSell, currencyBuy -> Triple(rates, amountSell, currencyBuy) }
                 .onEach { (rates, amountSell, currencyBuy) ->
                     if (rates is Result.Error) {
-                        updateExchangeState {
+                        _exchangeState.update {
                             it.copy(
                                 loading = false,
                                 error = rates.throwable,
@@ -132,12 +132,12 @@ class ExchangeViewModel @Inject constructor(
                             )
                         }
                     } else if (rates is Result.Success) {
-                        updateExchangeState { it.copy(loading = false, error = null) }
+                        _exchangeState.update { it.copy(loading = false, error = null) }
 
                         val rate = rates.value
                         val targetRate = rate.rates[currencyBuy]
                         if (targetRate == null) {
-                            updateExchangeState {
+                            _exchangeState.update {
                                 it.copy(
                                     error = NoRatesAvailableException(),
                                     pendingExchange = null
@@ -154,15 +154,11 @@ class ExchangeViewModel @Inject constructor(
                             rate.rates["EUR"]
                         )
 
-                        updateExchangeState { it.copy(pendingExchange = exchange) }
+                        _exchangeState.update { it.copy(pendingExchange = exchange) }
                     }
                 }
                 .launchIn(this)
         }
-    }
-
-    private fun updateExchangeState(update: (ExchangeState) -> ExchangeState) {
-        synchronized(this) { _exchangeState.update(update) }
     }
 
     init {

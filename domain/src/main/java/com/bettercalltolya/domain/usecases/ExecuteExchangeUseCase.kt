@@ -15,16 +15,19 @@ class ExecuteExchangeUseCase @Inject constructor(
     private val historyRepository: ExchangeHistoryRepository,
     private val balanceRepository: BalanceRepository,
     private val lastUsedCurrencyRepository: LastUsedCurrencyRepository,
+    private val getFeeUseCase: GetFeeUseCase,
     private val currentTime: CurrentTime
 ) {
     suspend operator fun invoke(pendingExchange: PendingExchange): Result<ExchangeHistoryItem> {
-        val currentTimeMillis = currentTime.currentTimeMillis()
+        val epochSeconds = currentTime.epochSeconds()
 
-        // TODO: fees
-        val feesAmount = 0.0
-        val feesCurrency = pendingExchange.sellCurrency
+        val fee = getFeeUseCase(
+            pendingExchange.sellAmount,
+            pendingExchange.sellCurrency,
+            pendingExchange.eurRate
+        )
 
-        val sellAmountWithFees = pendingExchange.sellAmount + feesAmount
+        val sellAmountWithFees = pendingExchange.sellAmount + fee.feeAmount
 
         val sellBalance = balanceRepository.getByCurrency(pendingExchange.sellCurrency)
             ?: Balance(pendingExchange.sellCurrency, 0.0)
@@ -43,9 +46,9 @@ class ExecuteExchangeUseCase @Inject constructor(
             pendingExchange.sellAmount,
             pendingExchange.buyCurrency,
             pendingExchange.buyAmount,
-            feesCurrency,
-            feesAmount,
-            currentTimeMillis
+            fee.feeCurrency,
+            fee.feeAmount,
+            epochSeconds
         )
 
         historyRepository.insert(historyItem)

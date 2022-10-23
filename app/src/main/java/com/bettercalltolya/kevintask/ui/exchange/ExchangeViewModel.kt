@@ -2,6 +2,7 @@ package com.bettercalltolya.kevintask.ui.exchange
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bettercalltolya.common.core.BuyAmountTooLowException
 import com.bettercalltolya.common.core.NoPendingExchangeException
 import com.bettercalltolya.common.core.NoRatesAvailableException
 import com.bettercalltolya.common.core.Result
@@ -89,6 +90,11 @@ class ExchangeViewModel @Inject constructor(
                 return@launch
             }
 
+            if (pending.buyAmount < 0.01) {
+                _exchangeNotifier.send(Result.error(BuyAmountTooLowException()))
+                return@launch
+            }
+
             _exchangeNotifier.send(executeExchangeUseCase(pending))
         }
     }
@@ -148,7 +154,8 @@ class ExchangeViewModel @Inject constructor(
                                 sellAmount = amount,
                                 sellCurrency = rate.base,
                                 buyAmount = amount * targetRate,
-                                buyCurrency = currencyTo
+                                buyCurrency = currencyTo,
+                                rate.rates["EUR"]
                             )
 
                             _exchangeState.update { it.copy(pendingExchange = exchange) }

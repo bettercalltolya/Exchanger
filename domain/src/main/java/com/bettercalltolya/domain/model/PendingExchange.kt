@@ -4,5 +4,6 @@ data class PendingExchange(
     val sellAmount: Double,
     val sellCurrency: String,
     val buyAmount: Double,
-    val buyCurrency: String
+    val buyCurrency: String,
+    val eurRate: Double?
 )

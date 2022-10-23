@@ -11,6 +11,7 @@ android {
         targetSdk = DefaultConfig.targetSdk
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = Options.compileSourceCompatibility
         targetCompatibility = Options.compileTargetCompatibility
     }
@@ -19,4 +20,6 @@ android {
     }
 }
 
-dependencies {}
+dependencies {
+    coreLibraryDesugaring(Dependencies.Desugaring.core)
+}

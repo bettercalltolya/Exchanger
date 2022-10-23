@@ -1,9 +1,11 @@
 package com.bettercalltolya.common.core
 
-class InsufficientBalanceException: Throwable()
+class InsufficientBalanceException : Throwable()
 
-class NoPendingExchangeException: Throwable()
+class BuyAmountTooLowException : Throwable()
 
-class NoRatesAvailableException: Throwable()
+class NoPendingExchangeException : Throwable()
 
-class NetworkException: Throwable()
+class NoRatesAvailableException : Throwable()
+
+class NetworkException : Throwable()

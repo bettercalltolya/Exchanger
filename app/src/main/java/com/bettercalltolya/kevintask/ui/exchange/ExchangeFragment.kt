@@ -63,7 +63,7 @@ class ExchangeFragment : Fragment() {
                     vm.setCurrencyFrom(it)
                 }
             }
-            currencyToPicker.setDebounceClickListener() {
+            currencyToPicker.setDebounceClickListener {
                 openPicker(
                     vm.currencies.value.filterNot { it == vm.currencyFrom.value }.toTypedArray(),
                     vm.currencyTo.value,
@@ -134,14 +134,6 @@ class ExchangeFragment : Fragment() {
 
             val message = if (item.feesAmount > 0.0) {
                 getString(
-                    R.string.exchange_success_alert_message_fmt,
-                    item.sellAmount,
-                    item.sellCurrency,
-                    item.buyAmount,
-                    item.buyCurrency
-                )
-            } else {
-                getString(
                     R.string.exchange_success_alert_message_with_fees_fmt,
                     item.sellAmount,
                     item.sellCurrency,
@@ -149,6 +141,14 @@ class ExchangeFragment : Fragment() {
                     item.buyCurrency,
                     item.feesAmount,
                     item.feesCurrency
+                )
+            } else {
+                getString(
+                    R.string.exchange_success_alert_message_fmt,
+                    item.sellAmount,
+                    item.sellCurrency,
+                    item.buyAmount,
+                    item.buyCurrency
                 )
             }
 

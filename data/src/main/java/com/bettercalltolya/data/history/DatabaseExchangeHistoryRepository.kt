@@ -19,6 +19,12 @@ class DatabaseExchangeHistoryRepository(
     override suspend fun isHistoryEmpty(): Boolean =
         historyDao.isHistoryEmpty()
 
+    override suspend fun conversionsCountToday(): Int =
+        historyDao.getConversionsCountToday()
+
+    override suspend fun getCount(): Int =
+        historyDao.getCount()
+
     override fun insert(history: ExchangeHistoryItem) {
         historyDao.insert(history.toEntity())
     }

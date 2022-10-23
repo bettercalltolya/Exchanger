@@ -14,9 +14,10 @@
 
     <string name="exchange_error_no_pending_exchange">You don\'t have pending exchange. Choose currency and enter amount</string>
     <string name="exchange_error_insufficient_balance">Looks like you don\'t have enough money for this conversion</string>
+    <string name="exchange_error_buy_amount_too_low">Oops… Conversion amount is too low</string>
 
     <string name="exchange_success_alert_title">Success!</string>
-    <string name="exchange_success_alert_message_fmt">You have converted %1$.2f %1$s to %3$.2f %4$s</string>
+    <string name="exchange_success_alert_message_fmt">You have converted %1$.2f %2$s to %3$.2f %4$s</string>
     <string name="exchange_success_alert_message_with_fees_fmt">You have converted %1$.2f %2$s to %3$.2f %4$s. Commission fee - %5$.2f %6$s</string>
 
     <string name="exchange_picker_title_sell">Sell</string>

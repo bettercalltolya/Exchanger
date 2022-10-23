@@ -18,6 +18,16 @@ interface ExchangeHistoryDao {
     @Query("SELECT NOT EXISTS(SELECT * FROM ExchangeHistoryEntity LIMIT 1)")
     suspend fun isHistoryEmpty(): Boolean
 
+    @Query("""
+        SELECT COUNT(*)
+        FROM ExchangeHistoryEntity
+        WHERE DATETIME(timestamp, 'unixepoch') >= DATETIME('now', 'start of day')
+    """)
+    suspend fun getConversionsCountToday(): Int
+
+    @Query("SELECT COUNT(id) FROM ExchangeHistoryEntity")
+    suspend fun getCount(): Int
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(history: ExchangeHistoryEntity)
 }

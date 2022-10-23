@@ -1,6 +1,8 @@
 package com.bettercalltolya.common.core
 
+import java.time.Instant
+
 object CurrentTime {
 
-    fun currentTimeMillis(): Long = System.currentTimeMillis()
+    fun epochSeconds(): Long = Instant.now().epochSecond
 }

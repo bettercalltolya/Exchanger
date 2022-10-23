@@ -9,7 +9,6 @@ android {
     compileSdk = DefaultConfig.targetSdk
 
     defaultConfig {
-
         minSdk = DefaultConfig.minSdk
         targetSdk = DefaultConfig.targetSdk
     }
@@ -23,6 +22,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(project(":domain"))
 
     implementation(Dependencies.Coroutines.core)

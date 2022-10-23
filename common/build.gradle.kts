@@ -1,9 +1,6 @@
 plugins {
     id(Plugins.AndroidLibrary.name)
     id(Plugins.KotlinAndroid.name)
-    id(Plugins.Hilt.name)
-    kotlin(Plugins.Kapt.name)
-    kotlin(Plugins.Serialization.name)
 }
 
 android {
@@ -19,15 +16,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = Options.kotlinJwmTarget
-        freeCompilerArgs += Options.freeCompilerArgs
     }
 }
 
-dependencies {
-    implementation(project(":common"))
-
-    implementation(Dependencies.Serialization.core)
-    implementation(Dependencies.Coroutines.core)
-    implementation(Dependencies.Google.hilt)
-    kapt(Dependencies.Google.hiltCompiler)
-}
+dependencies {}

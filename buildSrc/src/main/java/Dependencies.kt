@@ -21,6 +21,11 @@ object Plugins {
         const val version = "1.7.20"
     }
 
+    object Serialization {
+        const val name = "plugin.serialization"
+        const val version = "1.7.20"
+    }
+
     object Hilt {
         const val name = "com.google.dagger.hilt.android"
         const val version = "2.44"
@@ -69,6 +74,10 @@ object Dependencies {
         const val navigation = "2.5.2"
         const val room = "2.4.3"
         const val coroutines = "1.3.9"
+        const val serialization = "1.4.1"
+        const val paging = "3.1.1"
+
+        const val desugaring = "1.1.5"
 
         const val testJunit = "4.13.2"
 
@@ -86,6 +95,8 @@ object Dependencies {
         const val room = "androidx.room:room-runtime:${Versions.room}"
         const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
         const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
+        const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
     }
 
     object Google {
@@ -96,6 +107,14 @@ object Dependencies {
 
     object Coroutines {
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    }
+
+    object Serialization {
+        const val core = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serialization}"
+    }
+
+    object Desugaring {
+        const val core = "com.android.tools:desugar_jdk_libs:${Versions.desugaring}"
     }
 
     object Test {

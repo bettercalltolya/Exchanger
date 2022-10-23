@@ -3,14 +3,16 @@
     <style name="Theme.KevinTask" parent="Base.Theme.KevinTask">
         <item name="colorSurface">@color/black</item>
         <item name="colorOnSurface">@color/white_e5</item>
+        <item name="colorSurfaceTransparent">@color/black_transparent</item>
         <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/gray_1</item>
+        <item name="android:textColorSecondary">@color/gray_7c</item>
 
         <item name="android:colorBackground">@color/black_12</item>
         <item name="colorOnBackground">@color/white_f0</item>
 
         <item name="colorControlHighlight">@color/blue</item>
         <item name="colorControlActivated">@color/blue</item>
+        <item name="colorControlNormal">@color/gray_bc</item>
 
         <item name="android:navigationBarColor">?android:colorBackground</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>

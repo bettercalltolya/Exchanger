@@ -3,14 +3,16 @@
     <style name="Theme.KevinTask" parent="Base.Theme.KevinTask">
         <item name="colorSurface">@color/white_f2</item>
         <item name="colorOnSurface">@color/gray_25</item>
+        <item name="colorSurfaceTransparent">@color/white_f2_transparent</item>
         <item name="android:textColorPrimary">@color/black_12</item>
-        <item name="android:textColorSecondary">@color/gray_1</item>
+        <item name="android:textColorSecondary">@color/gray_7c</item>
 
         <item name="android:colorBackground">@color/white</item>
         <item name="colorOnBackground">@color/gray_33</item>
 
         <item name="colorControlHighlight">@color/blue</item>
-        <item name="colorControlActivated">@color/gray_5</item>
+        <item name="colorControlActivated">@color/gray_e6</item>
+        <item name="colorControlNormal">@color/gray_7c</item>
 
         <item name="android:navigationBarColor">?android:colorBackground</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
@@ -25,7 +27,12 @@
         <item name="colorSecondary">@color/blue</item>
         <item name="colorSecondaryVariant">@color/dark_blue</item>
         <item name="colorOnSecondary">@color/black_12</item>
+        <item name="colorAccent">@color/blue</item>
+
+        <item name="inputLayoutCurrencyExchangeStyle">@style/Widget.KevinTask.InputFieldLayout</item>
+        <item name="inputFieldCurrencyExchangeStyle">@style/Widget.KevinTask.InputField</item>
         <item name="toolbarStyle">@style/Widget.KevinTask.Toolbar</item>
+        <item name="buttonStyle">@style/Widget.KevinTask.Button</item>
 
         <item name="colorError">@color/warning_red</item>
         <item name="colorOnError">@color/white</item>
@@ -34,6 +41,7 @@
         <item name="textAppearanceHeadline">@style/TextAppearance.Headline</item>
         <item name="textAppearanceSubtitle">@style/TextAppearance.Subtitle</item>
         <item name="textAppearanceBody">@style/TextAppearance.Body</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Caption</item>
 
         <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
     </style>

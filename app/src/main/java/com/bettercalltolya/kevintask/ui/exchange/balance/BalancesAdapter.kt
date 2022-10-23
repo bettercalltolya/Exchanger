@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bettercalltolya.domain.model.Balance
 import com.bettercalltolya.kevintask.databinding.ViewBalancesListItemBinding
+import com.bettercalltolya.kevintask.ui.core.extensions.toCurrencyString
 
 class BalancesAdapter : ListAdapter<Balance, BalancesAdapter.ViewHolder>(diffCallback) {
 
@@ -21,7 +22,7 @@ class BalancesAdapter : ListAdapter<Balance, BalancesAdapter.ViewHolder>(diffCal
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.binding.balance.text = String.format("%.2f %s", item.amount, item.currency)
+        holder.binding.balance.text = item.amount.toCurrencyString(item.currency)
     }
 
     inner class ViewHolder(val binding: ViewBalancesListItemBinding) :

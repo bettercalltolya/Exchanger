@@ -4,4 +4,9 @@
     <attr name="textAppearanceHeadline" format="reference" />
     <attr name="textAppearanceSubtitle" format="reference" />
     <attr name="textAppearanceBody" format="reference" />
+
+    <attr name="colorSurfaceTransparent" format="color" />
+
+    <attr name="inputLayoutCurrencyExchangeStyle" format="reference" />
+    <attr name="inputFieldCurrencyExchangeStyle" format="reference" />
 </resources>

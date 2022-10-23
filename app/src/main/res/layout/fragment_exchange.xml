@@ -40,5 +40,216 @@
             app:layout_constraintTop_toBottomOf="@+id/balances_title"
             tools:listitem="@layout/view_balances_list_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/exchange_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_container_rounded"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:id="@+id/exchange_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exchange_form_title"
+            android:textAppearance="?textAppearanceHeadline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Currency From block -->
+        <TextView
+            android:id="@+id/from_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/exchange_form_from_title"
+            android:textAppearance="?textAppearanceCaption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exchange_title" />
+
+        <TextView
+            android:id="@+id/available_balance_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:text="@string/exchange_form_available_title"
+            android:textAppearance="?textAppearanceCaption"
+            app:layout_constraintEnd_toStartOf="@+id/available_balance_value"
+            app:layout_constraintTop_toBottomOf="@+id/exchange_title" />
+
+        <TextView
+            android:id="@+id/available_balance_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAppearance="?textAppearanceCaption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exchange_title"
+            tools:text="1000" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/currency_from_input_layout"
+            style="?inputLayoutCurrencyExchangeStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/currency_from_picker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/from_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/currency_from_input_field"
+                style="?inputFieldCurrencyExchangeStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/exchange_form_input_hint"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/currency_from_picker"
+            android:layout_width="64dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_selectable_rounded"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/currency_from_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/currency_from_input_layout">
+
+            <TextView
+                android:id="@+id/currency_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?textAppearanceSubtitle"
+                tools:text="EUR" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_drop_down" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ImageView
+            android:id="@+id/exchange_direction_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@null"
+            android:rotation="270"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintEnd_toEndOf="@+id/currency_from_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currency_from_input_layout" />
+
+        <!-- Currency To Block -->
+        <TextView
+            android:id="@+id/to_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exchange_form_to_title"
+            android:textAppearance="?textAppearanceCaption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exchange_direction_image" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/currency_to_input_layout"
+            style="?inputLayoutCurrencyExchangeStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            app:layout_constraintEnd_toStartOf="@+id/currency_to_picker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/to_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/currency_to_input_field"
+                style="?inputFieldCurrencyExchangeStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/exchange_form_input_hint"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="?textAppearanceCaption"
+            android:textColor="?colorError"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currency_to_input_layout"
+            tools:text="@string/exchange_form_error_no_rates_available" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/currency_to_picker"
+            android:layout_width="64dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_selectable_rounded"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/currency_to_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/currency_to_input_layout">
+
+            <TextView
+                android:id="@+id/currency_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?textAppearanceSubtitle"
+                tools:text="EUR" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_arrow_drop_down" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            android:id="@+id/buy_button"
+            style="?buttonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/exchange_form_buy_button_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currency_to_input_layout" />
+
+        <FrameLayout
+            android:id="@+id/loading_overlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?colorSurfaceTransparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exchange_title">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateTint="?colorAccent" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
 

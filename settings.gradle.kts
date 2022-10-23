@@ -16,3 +16,4 @@ rootProject.name = "Kevin Task"
 include(":app")
 include(":domain")
 include(":data")
+include(":common")

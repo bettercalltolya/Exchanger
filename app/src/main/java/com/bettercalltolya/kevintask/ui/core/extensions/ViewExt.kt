@@ -8,7 +8,7 @@ fun View.fadeOut(
     endAction: (() -> Unit)? = null
 ) {
     animate().cancel()
-    if (visibility == View.GONE || alpha == 0f) return
+    if (visibility == View.GONE) return
 
     animate()
         .alpha(0f)
@@ -25,7 +25,7 @@ fun View.fadeIn(
     endAction: (() -> Unit)? = null
 ) {
     animate().cancel()
-    if (visibility == View.VISIBLE || alpha == 1f) return
+    if (visibility == View.VISIBLE) return
 
     animate()
         .alpha(1f)

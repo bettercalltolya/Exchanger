@@ -1,7 +1,32 @@
 <resources>
 
-    <string name="exchange_screen_label">Exchange</string>
-    <string name="exchange_history_screen_label">History</string>
+    <string name="exchange_screen_label">Currency converter</string>
+    <string name="exchange_history_screen_label">Exchange history</string>
 
     <string name="exchange_balances_title">Balances</string>
+    <string name="exchange_form_title">Exchange</string>
+    <string name="exchange_form_from_title">From</string>
+    <string name="exchange_form_available_title">Available:</string>
+    <string name="exchange_form_to_title">To</string>
+    <string name="exchange_form_input_hint">0.00</string>
+    <string name="exchange_form_buy_button_title">Buy</string>
+    <string name="exchange_form_error_no_rates_available">No rates available. Please, try another currency</string>
+
+    <string name="exchange_error_no_pending_exchange">You don\'t have pending exchange. Choose currency and enter amount</string>
+    <string name="exchange_error_insufficient_balance">Looks like you don\'t have enough money for this conversion</string>
+
+    <string name="exchange_success_alert_title">Success!</string>
+    <string name="exchange_success_alert_message_fmt">You have converted %1$.2f %1$s to %3$.2f %4$s</string>
+    <string name="exchange_success_alert_message_with_fees_fmt">You have converted %1$.2f %2$s to %3$.2f %4$s. Commission fee - %5$.2f %6$s</string>
+
+    <string name="exchange_picker_title_sell">Sell</string>
+    <string name="exchange_picker_title_buy">Buy</string>
+
+    <string name="exchange_history_with_fees_title_fmt">With fees: %s</string>
+    <string name="exchange_history_empty_title">You don\'t have conversions yet</string>
+
+    <string name="general_ok">OK</string>
+    <string name="general_cancel">Cancel</string>
+    <string name="general_error_no_network">Check your network connection</string>
+    <string name="general_error_message">Something went wrong. Please, try again</string>
 </resources>

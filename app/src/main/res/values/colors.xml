@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#FFFFFF</color>
     <color name="black_12">#121212</color>
-    <color name="gray_33">#333333</color>
-    <color name="white_f0">#F0F0F0</color>
-
-    <color name="white_f2">#F2F2F2</color>
     <color name="black">#000000</color>
-    <color name="gray_25">#252525</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_f0">#F0F0F0</color>
+    <color name="white_f2">#F2F2F2</color>
     <color name="white_e5">#E5E5E5</color>
+
+    <color name="black_transparent">#AA000000</color>
+    <color name="white_f2_transparent">#AAF2F2F2</color>
 
     <color name="warning_red">#ff3b30</color>
 
     <color name="blue">#5d80fe</color>
-    <color name="blue_transparent">#1a5d80fe</color>
     <color name="dark_blue">#0b1e42</color>
-    <color name="extra_light_blue">#f2f2f7</color>
 
-    <color name="gray_0">#373c42</color>
-    <color name="gray_1">#7c8894</color>
-    <color name="gray_2">#bcc4cc</color>
-    <color name="gray_5">#e6e7ee</color>
+    <color name="gray_33">#333333</color>
+    <color name="gray_25">#252525</color>
+    <color name="gray_7c">#7c8894</color>
+    <color name="gray_bc">#bcc4cc</color>
+    <color name="gray_e6">#e6e7ee</color>
 </resources>

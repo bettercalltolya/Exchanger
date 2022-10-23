@@ -17,6 +17,9 @@ class DatabaseBalanceRepository(private val dao: BalanceDao) : BalanceRepository
     override fun getBalancesFlow(): Flow<List<Balance>> =
         dao.getBalancesFlow().map { balances -> balances.map(BalanceEntity::toModel) }
 
+    override suspend fun getByCurrency(currency: String): Balance? =
+        dao.getByCurrency(currency)?.toModel()
+
     override fun insert(balance: Balance) = dao.insert(balance.toEntity())
 
     override fun insert(balances: List<Balance>) = dao.insert(balances.map(Balance::toEntity))

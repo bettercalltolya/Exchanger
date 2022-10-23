@@ -32,6 +32,7 @@ android {
         viewBinding = true
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = Options.compileSourceCompatibility
         targetCompatibility = Options.compileTargetCompatibility
     }
@@ -50,8 +51,11 @@ dependencies {
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.AndroidX.navigationFragment)
     implementation(Dependencies.AndroidX.navigationUi)
+    implementation(Dependencies.AndroidX.paging)
     implementation(Dependencies.Coroutines.core)
     implementation(Dependencies.Google.material)
+
+    coreLibraryDesugaring(Dependencies.Desugaring.core)
     
     implementation(Dependencies.Google.hilt)
     kapt(Dependencies.Google.hiltCompiler)

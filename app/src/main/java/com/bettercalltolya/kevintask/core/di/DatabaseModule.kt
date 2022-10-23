@@ -23,7 +23,7 @@ class DatabaseModule {
     @Singleton
     fun provideBalanceDao(database: AppDatabase) = database.balanceDao()
 
-    companion object {
-        private const val DATABASE_NAME = "kevin_task_database"
-    }
+    @Provides
+    @Singleton
+    fun provideExchangeHistoryDao(database: AppDatabase) = database.exchangeHistoryDao()
 }

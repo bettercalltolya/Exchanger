@@ -15,11 +15,6 @@ class ObserveBalancesUseCase @Inject constructor(
         .transformLatest { balances ->
             val currencies = currencyRepository.getAvailableCurrencies()
 
-            if (balances.isEmpty()) {
-                emit(currencies.mapToInitialBalance())
-                return@transformLatest
-            }
-
             emit(balances.mapWithEmptyBalances(currencies))
         }
 
@@ -29,20 +24,6 @@ class ObserveBalancesUseCase @Inject constructor(
             .filterNot { balanceCurrencies.contains(it) }
             .map { Balance(it, 0.0) }
 
-        return this + emptyBalances
-    }
-
-    // Hardcoding initial balance like that to keep things simple
-    private fun Set<String>.mapToInitialBalance(): List<Balance> {
-        if (isEmpty()) return emptyList()
-
-        val eurOrFirstIndex = indexOf("EUR")
-            .takeIf { it >= 0 }
-            ?: 0
-
-        return mapIndexed { i, currency ->
-            if (i == eurOrFirstIndex) Balance(currency, 1000.0)
-            else Balance(currency, 0.0)
-        }
+        return (this + emptyBalances).sortedBy { it.currency }
     }
 }

@@ -27,6 +27,9 @@ interface BalanceDao {
     @Query("SELECT * FROM BalanceEntity")
     suspend fun getBalances(): List<BalanceEntity>
 
+    @Query("SELECT * FROM BalanceEntity WHERE currency = :currency")
+    suspend fun getByCurrency(currency: String): BalanceEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(balance: BalanceEntity)
 

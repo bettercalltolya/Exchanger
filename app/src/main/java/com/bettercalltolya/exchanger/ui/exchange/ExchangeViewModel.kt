@@ -75,6 +75,14 @@ class ExchangeViewModel @Inject constructor(
         _currencyTo.tryEmit(currency)
     }
 
+    fun swapCurrencies() {
+        val to = _currencyTo.value
+        val from = _currencyFrom.value
+
+        _currencyTo.tryEmit(from)
+        _currencyFrom.tryEmit(to)
+    }
+
     fun setSellAmount(amount: Double) {
         _sellAmount.tryEmit(amount)
     }

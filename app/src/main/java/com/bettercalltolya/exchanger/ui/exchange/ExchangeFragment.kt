@@ -53,6 +53,7 @@ class ExchangeFragment : Fragment() {
             }
 
             buyButton.setDebounceClickListener { vm.executePendingExchange() }
+            swapCurrenciesButton.setDebounceClickListener { vm.swapCurrencies() }
 
             currencyFromPicker.setDebounceClickListener {
                 openPicker(

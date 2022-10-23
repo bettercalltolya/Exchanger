@@ -2,10 +2,7 @@ package com.bettercalltolya.kevintask.ui.exchange
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bettercalltolya.common.core.BuyAmountTooLowException
-import com.bettercalltolya.common.core.NoPendingExchangeException
-import com.bettercalltolya.common.core.NoRatesAvailableException
-import com.bettercalltolya.common.core.Result
+import com.bettercalltolya.common.core.*
 import com.bettercalltolya.domain.currency.CurrencyRepository
 import com.bettercalltolya.domain.currency.LastUsedCurrencyRepository
 import com.bettercalltolya.domain.model.ExchangeHistoryItem
@@ -13,26 +10,28 @@ import com.bettercalltolya.domain.model.PendingExchange
 import com.bettercalltolya.domain.usecases.ExecuteExchangeUseCase
 import com.bettercalltolya.domain.usecases.GetExchangeRatesUseCase
 import com.bettercalltolya.domain.usecases.ObserveBalancesUseCase
-import com.bettercalltolya.common.core.CoroutineDispatchers
 import com.bettercalltolya.kevintask.ui.core.extensions.toCurrencyString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.Channel.Factory.CONFLATED
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
 class ExchangeViewModel @Inject constructor(
     private val dispatchers: CoroutineDispatchers,
     private val executeExchangeUseCase: ExecuteExchangeUseCase,
+    private val getExchangeRatesUseCase: GetExchangeRatesUseCase,
     currencyRepository: CurrencyRepository,
     lastUsedCurrencyRepository: LastUsedCurrencyRepository,
-    observeBalancesUseCase: ObserveBalancesUseCase,
-    getExchangeRatesUseCase: GetExchangeRatesUseCase
+    observeBalancesUseCase: ObserveBalancesUseCase
 ) : ViewModel() {
 
+    private var ratesJob: Job? = null
     private var exchangeJob: Job? = null
 
     private val _exchangeNotifier = Channel<Result<ExchangeHistoryItem>>(CONFLATED)
@@ -99,6 +98,73 @@ class ExchangeViewModel @Inject constructor(
         }
     }
 
+    private fun updateRates(currencyFrom: String) {
+        ratesJob?.cancel()
+        ratesJob = viewModelScope.launch(dispatchers.io) {
+            updateExchangeState { it.copy(loading = true, error = null) }
+
+            val amountSellFlow = _sellAmount
+            val currencyBuyFow = _currencyTo
+            val ratesFlow = flow {
+                while (true) {
+                    try {
+                        emit(Result.of(getExchangeRatesUseCase(currencyFrom)))
+                    } catch (e: Throwable) {
+                        emit(Result.error(e))
+                        if (e.isTerminatingException()) break
+                    }
+                    delay(RATES_UPDATE_TIMEOUT_MILLIS)
+                }
+            }
+
+            combine(
+                ratesFlow,
+                amountSellFlow,
+                currencyBuyFow
+            ) { rates, amountSell, currencBuy -> Triple(rates, amountSell, currencBuy) }
+                .onEach { (rates, amountSell, currencBuy) ->
+                    if (rates is Result.Error) {
+                        updateExchangeState {
+                            it.copy(
+                                loading = false,
+                                error = rates.throwable,
+                                pendingExchange = null
+                            )
+                        }
+                    } else if (rates is Result.Success) {
+                        updateExchangeState { it.copy(loading = false, error = null) }
+
+                        val rate = rates.value
+                        val targetRate = rate.rates[currencBuy]
+                        if (targetRate == null) {
+                            updateExchangeState {
+                                it.copy(
+                                    error = NoRatesAvailableException(),
+                                    pendingExchange = null
+                                )
+                            }
+                            return@onEach
+                        }
+
+                        val exchange = PendingExchange(
+                            sellAmount = amountSell,
+                            sellCurrency = rate.base,
+                            buyAmount = amountSell * targetRate,
+                            buyCurrency = currencBuy,
+                            rate.rates["EUR"]
+                        )
+
+                        updateExchangeState { it.copy(pendingExchange = exchange) }
+                    }
+                }
+                .launchIn(this)
+        }
+    }
+
+    private fun updateExchangeState(update: (ExchangeState) -> ExchangeState) {
+        synchronized(this) { _exchangeState.update(update) }
+    }
+
     init {
         val currencies = currencyRepository.getAvailableCurrencies()
         val eurOrFirst = currencies.find { it == "EUR" } ?: currencies.first()
@@ -112,57 +178,13 @@ class ExchangeViewModel @Inject constructor(
         _currencyTo.tryEmit(lastBought)
 
         viewModelScope.launch {
-            _currencyFrom.filter { it.isNotBlank() }
-                .flatMapLatest { fromCurrency ->
-                    combine(
-                        getExchangeRatesUseCase(fromCurrency),
-                        _sellAmount,
-                        _currencyTo
-                    ) { ratesResult, amount, currencyTo -> Triple(ratesResult, amount, currencyTo) }
-                }
-                .onEach { (ratesResult, amount, currencyTo) ->
-                    when (ratesResult) {
-                        is Result.Loading -> {
-                            _exchangeState.update { it.copy(loading = true, error = null) }
-                        }
-                        is Result.Error -> {
-                            _exchangeState.update {
-                                it.copy(
-                                    loading = false,
-                                    error = ratesResult.throwable,
-                                    pendingExchange = null
-                                )
-                            }
-                        }
-                        is Result.Success -> {
-                            _exchangeState.update { it.copy(loading = false, error = null) }
-
-                            val rate = ratesResult.value
-                            val targetRate = rate.rates[currencyTo]
-
-                            if (targetRate == null) {
-                                _exchangeState.update {
-                                    it.copy(
-                                        error = NoRatesAvailableException(),
-                                        pendingExchange = null
-                                    )
-                                }
-                                return@onEach
-                            }
-
-                            val exchange = PendingExchange(
-                                sellAmount = amount,
-                                sellCurrency = rate.base,
-                                buyAmount = amount * targetRate,
-                                buyCurrency = currencyTo,
-                                rate.rates["EUR"]
-                            )
-
-                            _exchangeState.update { it.copy(pendingExchange = exchange) }
-                        }
-                    }
-                }
+            _currencyFrom
+                .onEach(::updateRates)
                 .launchIn(this)
         }
+    }
+
+    companion object {
+        private val RATES_UPDATE_TIMEOUT_MILLIS = TimeUnit.SECONDS.toMillis(5)
     }
 }

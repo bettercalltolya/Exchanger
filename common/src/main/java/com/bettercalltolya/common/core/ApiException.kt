@@ -8,3 +8,6 @@ sealed class ApiException : IOException() {
     object Network : ApiException()
     object Unknown : ApiException()
 }
+
+fun Throwable.isTerminatingException() =
+    this is ApiException.Unauthorized || this is ApiException.ApiKeyLimitExceeded

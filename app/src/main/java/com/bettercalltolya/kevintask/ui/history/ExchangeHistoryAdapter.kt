@@ -38,7 +38,7 @@ class ExchangeHistoryAdapter :
                 item.feesAmount.toCurrencyString(item.feesCurrency)
             )
             date.text = LocalDateTime.ofInstant(
-                Instant.ofEpochMilli(item.timestamp),
+                Instant.ofEpochSecond(item.timestamp),
                 ZoneId.systemDefault()
             ).format(dateFormatter)
         }

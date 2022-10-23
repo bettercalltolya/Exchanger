@@ -1,21 +1,21 @@
-package com.bettercalltolya.kevintask.ui.core
+package com.bettercalltolya.kevintask.ui.core.view
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.bettercalltolya.kevintask.databinding.KevinTaskToolbarBinding
+import com.bettercalltolya.kevintask.databinding.ExchangerToolbarBinding
 import com.bettercalltolya.kevintask.ui.core.extensions.fadeIn
 import com.bettercalltolya.kevintask.ui.core.extensions.fadeOut
 import com.bettercalltolya.kevintask.ui.core.extensions.setDebounceClickListener
 
-class KevinTaskToolbar @JvmOverloads constructor(
+class ExchangerToolbar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttrs: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttrs) {
 
-    private val binding = KevinTaskToolbarBinding.inflate(
+    private val binding = ExchangerToolbarBinding.inflate(
         LayoutInflater.from(context),
         this,
         true

@@ -7,7 +7,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import com.bettercalltolya.kevintask.R
 import com.bettercalltolya.kevintask.databinding.ActivityMainBinding
-import com.bettercalltolya.kevintask.ui.core.KevinTaskToolbar
+import com.bettercalltolya.kevintask.ui.core.view.ExchangerToolbar
 import com.bettercalltolya.kevintask.ui.exchange.ExchangeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
     }
 
-    private fun KevinTaskToolbar.setupListeners() {
+    private fun ExchangerToolbar.setupListeners() {
         setOnHistoryClickListener {
             navController.navigate(ExchangeFragmentDirections.toExchangeHistory())
         }

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.KevinTask" parent="Base.Theme.KevinTask">
+    <style name="Theme.Exchanger" parent="Base.Theme.Exchanger">
         <item name="colorSurface">@color/white_f2</item>
         <item name="colorOnSurface">@color/gray_25</item>
         <item name="colorSurfaceTransparent">@color/white_f2_transparent</item>
@@ -20,7 +20,7 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Base.Theme.KevinTask" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.Theme.Exchanger" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -29,10 +29,10 @@
         <item name="colorOnSecondary">@color/black_12</item>
         <item name="colorAccent">@color/blue</item>
 
-        <item name="inputLayoutCurrencyExchangeStyle">@style/Widget.KevinTask.InputFieldLayout</item>
-        <item name="inputFieldCurrencyExchangeStyle">@style/Widget.KevinTask.InputField</item>
-        <item name="toolbarStyle">@style/Widget.KevinTask.Toolbar</item>
-        <item name="buttonStyle">@style/Widget.KevinTask.Button</item>
+        <item name="inputLayoutCurrencyExchangeStyle">@style/Widget.Exchanger.InputFieldLayout</item>
+        <item name="inputFieldCurrencyExchangeStyle">@style/Widget.Exchanger.InputField</item>
+        <item name="toolbarStyle">@style/Widget.Exchanger.Toolbar</item>
+        <item name="buttonStyle">@style/Widget.Exchanger.Button</item>
 
         <item name="colorError">@color/warning_red</item>
         <item name="colorOnError">@color/white</item>

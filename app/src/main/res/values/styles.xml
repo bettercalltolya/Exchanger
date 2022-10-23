@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.KevinTask.Toolbar" parent="Widget.AppCompat.Toolbar">
+    <style name="Widget.Exchanger.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?colorPrimaryVariant</item>
         <item name="titleTextColor">?colorOnPrimary</item>
     </style>
 
-    <style name="Widget.KevinTask.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    <style name="Widget.Exchanger.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="minHeight">56dp</item>
         <item name="cornerRadius">8dp</item>
         <item name="android:insetTop">0dp</item>
@@ -16,14 +16,14 @@
         <item name="backgroundTint">?colorPrimary</item>
     </style>
 
-    <style name="Widget.KevinTask.InputFieldLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="Widget.Exchanger.InputFieldLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/exchange_input_box_color</item>
         <item name="hintEnabled">false</item>
         <item name="errorEnabled">false</item>
         <item name="boxStrokeWidth">1dp</item>
     </style>
 
-    <style name="Widget.KevinTask.InputField" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+    <style name="Widget.Exchanger.InputField" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="android:textAppearance">?textAppearanceSubtitle</item>
         <item name="hintTextAppearance">?textAppearanceSubtitle</item>
     </style>

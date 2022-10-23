@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Kevin Task"
+rootProject.name = "Exchanger"
 include(":app")
 include(":domain")
 include(":data")

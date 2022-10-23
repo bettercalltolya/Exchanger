@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 object DatabaseProvider {
-    private const val DATABASE_NAME = "kevin_task_database"
+    private const val DATABASE_NAME = "exchanger_database"
 
     private var INSTANCE: AppDatabase? = null
 

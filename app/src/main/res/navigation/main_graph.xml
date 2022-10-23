@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/exchangeFragment"
-        android:name="com.bettercalltolya.kevintask.ui.exchange.ExchangeFragment"
+        android:name="com.bettercalltolya.exchanger.ui.exchange.ExchangeFragment"
         android:label="@string/exchange_screen_label"
         tools:layout="@layout/fragment_exchange">
 
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/exchangeHistoryFragment"
-        android:name="com.bettercalltolya.kevintask.ui.history.ExchangeHistoryFragment"
+        android:name="com.bettercalltolya.exchanger.ui.history.ExchangeHistoryFragment"
         android:label="@string/exchange_history_screen_label"
         tools:layout="@layout/fragment_exchange_history" />
 </navigation>

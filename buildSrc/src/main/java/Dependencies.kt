@@ -38,7 +38,7 @@ object Plugins {
 }
 
 object DefaultConfig {
-    const val id = "com.bettercalltolya.kevintask"
+    const val id = "com.bettercalltolya.exchanger"
     const val versionCode = 1
     const val versionName = "1.0"
     const val minSdk = 23

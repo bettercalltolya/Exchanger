@@ -1,9 +1,6 @@
 plugins {
     id(Plugins.AndroidLibrary.name)
     id(Plugins.KotlinAndroid.name)
-    id(Plugins.Hilt.name)
-    kotlin(Plugins.Kapt.name)
-    kotlin(Plugins.Serialization.name)
 }
 
 android {
@@ -14,6 +11,7 @@ android {
         targetSdk = DefaultConfig.targetSdk
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = Options.compileSourceCompatibility
         targetCompatibility = Options.compileTargetCompatibility
     }
@@ -25,16 +23,12 @@ android {
 
 dependencies {
     implementation(project(":common"))
-
-    implementation(Dependencies.Serialization.core)
     implementation(Dependencies.Coroutines.core)
-    implementation(Dependencies.Google.hilt)
-    kapt(Dependencies.Google.hiltCompiler)
+    coreLibraryDesugaring(Dependencies.Desugaring.core)
 
-    testImplementation(project(":testcommon"))
-    testImplementation(Dependencies.Test.junit)
-    testImplementation(Dependencies.Test.arch)
-    testImplementation(Dependencies.Test.mockito)
-    testImplementation(Dependencies.Test.mockitoKotlin)
-    testImplementation(Dependencies.Test.coroutines)
+    implementation(Dependencies.Test.junit)
+    implementation(Dependencies.Test.arch)
+    implementation(Dependencies.Test.mockito)
+    implementation(Dependencies.Test.mockitoKotlin)
+    implementation(Dependencies.Test.coroutines)
 }

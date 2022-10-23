@@ -76,8 +76,10 @@ dependencies {
     implementation(Dependencies.AndroidX.room)
     kapt(Dependencies.AndroidX.roomCompiler)
 
+    testImplementation(project(":testcommon"))
     testImplementation(Dependencies.Test.junit)
-
-    androidTestImplementation(Dependencies.AndroidTest.junit)
-    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
+    testImplementation(Dependencies.Test.arch)
+    testImplementation(Dependencies.Test.mockito)
+    testImplementation(Dependencies.Test.mockitoKotlin)
+    testImplementation(Dependencies.Test.coroutines)
 }

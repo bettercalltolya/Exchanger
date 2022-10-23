@@ -74,7 +74,7 @@ object Dependencies {
         const val hilt = "2.44"
         const val navigation = "2.5.2"
         const val room = "2.4.3"
-        const val coroutines = "1.3.9"
+        const val coroutines = "1.6.4"
         const val serialization = "1.4.1"
         const val paging = "3.1.1"
         const val retrofit = "2.9.0"
@@ -84,9 +84,9 @@ object Dependencies {
         const val desugaring = "1.1.5"
 
         const val testJunit = "4.13.2"
-
-        const val androidTestJunit = "1.1.3"
-        const val androidTestEspressoCore = "3.4.0"
+        const val mockito = "4.8.0"
+        const val mockitoKotlin = "2.2.0"
+        const val testArch = "2.1.0"
     }
 
     object AndroidX {
@@ -129,10 +129,9 @@ object Dependencies {
 
     object Test {
         const val junit = "junit:junit:${Versions.testJunit}"
-    }
-
-    object AndroidTest {
-        const val junit = "androidx.test.ext:junit:${Versions.androidTestJunit}"
-        const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.androidTestEspressoCore}"
+        const val arch = "androidx.arch.core:core-testing:${Versions.testArch}"
+        const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+        const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     }
 }

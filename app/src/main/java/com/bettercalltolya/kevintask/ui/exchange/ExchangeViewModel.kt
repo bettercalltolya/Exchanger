@@ -121,8 +121,8 @@ class ExchangeViewModel @Inject constructor(
                 ratesFlow,
                 amountSellFlow,
                 currencyBuyFow
-            ) { rates, amountSell, currencBuy -> Triple(rates, amountSell, currencBuy) }
-                .onEach { (rates, amountSell, currencBuy) ->
+            ) { rates, amountSell, currencyBuy -> Triple(rates, amountSell, currencyBuy) }
+                .onEach { (rates, amountSell, currencyBuy) ->
                     if (rates is Result.Error) {
                         updateExchangeState {
                             it.copy(
@@ -135,7 +135,7 @@ class ExchangeViewModel @Inject constructor(
                         updateExchangeState { it.copy(loading = false, error = null) }
 
                         val rate = rates.value
-                        val targetRate = rate.rates[currencBuy]
+                        val targetRate = rate.rates[currencyBuy]
                         if (targetRate == null) {
                             updateExchangeState {
                                 it.copy(
@@ -150,7 +150,7 @@ class ExchangeViewModel @Inject constructor(
                             sellAmount = amountSell,
                             sellCurrency = rate.base,
                             buyAmount = amountSell * targetRate,
-                            buyCurrency = currencBuy,
+                            buyCurrency = currencyBuy,
                             rate.rates["EUR"]
                         )
 

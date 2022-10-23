@@ -19,7 +19,7 @@ class GetFeeUseCase @Inject constructor(
 
         val conversionsCountToday = historyRepository.conversionsCountToday()
         val fee =
-            if (conversionsCountToday <= ADDITIONAL_FEE_AFTER_COUNT) amount * BASE_FEE
+            if (conversionsCountToday < ADVANCED_FEE_AFTER_COUNT) amount * BASE_FEE
             else calculateExtendedFee(amount, currency, eurRate)
 
         return Fee(fee, currency)
@@ -30,17 +30,17 @@ class GetFeeUseCase @Inject constructor(
             ?.takeIf { currency != CURRENCY_EUR }
             ?: 1.0
 
-        return amount * EXTENDED_FEE + ADDITIONAL_FEE_EUR * additionalFeeRate
+        return amount * ADVANCED_FEE + ADVANCED_FEE_EUR * additionalFeeRate
     }
 
     companion object {
         private const val FEELESS_COUNT = 5
-        private const val ADDITIONAL_FEE_AFTER_COUNT = 15
+        private const val ADVANCED_FEE_AFTER_COUNT = 15
 
         private const val BASE_FEE = 0.7 / 100 // 0.7%
-        private const val EXTENDED_FEE = 1.2 / 100 // 1.2%
+        private const val ADVANCED_FEE = 1.2 / 100 // 1.2%
 
         private const val CURRENCY_EUR = "EUR"
-        private const val ADDITIONAL_FEE_EUR = 0.30
+        private const val ADVANCED_FEE_EUR = 0.30
     }
 }

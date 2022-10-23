@@ -1,8 +1,8 @@
 package com.bettercalltolya.kevintask.core.di
 
 import android.content.Context
-import androidx.room.Room
 import com.bettercalltolya.data.database.AppDatabase
+import com.bettercalltolya.data.database.DatabaseProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,9 +17,7 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideDataBase(@ApplicationContext context: Context): AppDatabase =
-        Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
+        DatabaseProvider.getInstance(context)
 
     @Provides
     @Singleton

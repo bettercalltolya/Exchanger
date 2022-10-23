@@ -1,4 +1,4 @@
-package com.bettercalltolya.exchanger.ui.core.dispatchers
+package com.bettercalltolya.exchanger.core.dispatchers
 
 import com.bettercalltolya.common.core.CoroutineDispatchers
 import kotlinx.coroutines.Dispatchers

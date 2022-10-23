@@ -1,4 +1,4 @@
-package com.bettercalltolya.kevintask.ui.exchange.balance
+package com.bettercalltolya.kevintask.ui.exchange
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

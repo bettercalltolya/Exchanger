@@ -18,7 +18,6 @@ import com.bettercalltolya.kevintask.databinding.FragmentExchangeBinding
 import com.bettercalltolya.kevintask.ui.core.extensions.*
 import com.bettercalltolya.kevintask.ui.core.helpers.CurrencyAmountInputFilter
 import com.bettercalltolya.kevintask.ui.core.helpers.ErrorUiMapper
-import com.bettercalltolya.kevintask.ui.exchange.balance.BalancesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -126,11 +125,11 @@ class ExchangeFragment : Fragment() {
 
     private fun handleExchangeResult(result: Result<ExchangeHistoryItem>) {
         if (result is Result.Error) {
-             Toast.makeText(
-                 requireContext(),
-                 ErrorUiMapper.map(result.throwable, requireContext()),
-                 Toast.LENGTH_LONG
-             ).show()
+            Toast.makeText(
+                requireContext(),
+                ErrorUiMapper.map(result.throwable, requireContext()),
+                Toast.LENGTH_LONG
+            ).show()
         } else if (result is Result.Success) {
             val item = result.value
 
